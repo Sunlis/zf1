@@ -468,7 +468,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
             foreach ($params as $key => $value) {
                 $params_out[] = rawurlencode($key)."=".rawurlencode($value);
             }
-            $request->setRawData(join('&', $params_out), Zend_Http_Client::ENC_URLENCODED);
+            $request->setRawData(join('&', $params_out), Zend_Http_Client::ENC_URLENCODED . "charset=utf-8");
             $httpResponse = $request->request();
         } catch (Zend_Http_Client_Exception $zhce) {
             $message = 'Error in request to AWS service: ' . $zhce->getMessage();
